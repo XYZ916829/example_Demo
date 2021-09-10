@@ -20,7 +20,7 @@
 
 MOTA（跟踪准确率），除了误报、丢失目标、ID异常切换情况以外的正确预测样本占所有样本的比率，衡量了跟踪器在检测目标和保持轨迹时的性能，与目标位置的估计精度无关。
 
-<center><img src="./images/MOTA.png" width=70%></center>
+<center><img src="./images/MOTA.png" width=40%></center>
 
 $m_t$:FP,缺失数（漏检数），即在第t帧中该目标$O_j$没有假设位置与其匹配。
 
