@@ -22,8 +22,6 @@ MOTA（跟踪准确率），除了误报、丢失目标、ID异常切换情况�
 
 <center><img src="./images/MOTA.png" width=40%></center>
 
-$$f(x)=x$$
-
 $$m_t$$:FP,缺失数（漏检数），即在第t帧中该目标$$O_j$$没有假设位置与其匹配。
 
 $$fp_t$$ :是FN，误判数，即在第t帧中给出的假设位置$$h_j$$没有跟踪目标与其匹配。
@@ -86,25 +84,31 @@ FairMOT属于JDE（Jointly learns the Detector and Embedding model ）的一种�
 ## 5 模型评估
 
 运行如下代码：
-
-'python3.7 tools/eval_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams'
+```
+python3.7 tools/eval_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams
+```
 
 ## 6 模型优化(进阶)
 
 ## 7 模型预测
 
 视频预测：
-'python3.7 tools/infer_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams --video_file=dataset/mot/test_vehicle.mov  --save_videos --draw_threshold 0.4'
+```
+python3.7 tools/infer_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams --video_file=dataset/mot/test_vehicle.mov  --save_videos --draw_threshold 0.4
+```
 
 ## 8 模型导出
 
 导出模型运行如下代码：
-
-'python3.7 tools/export_model.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml  -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams'
+```
+python3.7 tools/export_model.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml  -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams
+```
 
 ## 9 用导出的模型基于Python去预测
 
 运行如下代码：
 
-'python3.7 deploy/python/mot_jde_infer.py --model_dir=output_inference/fairmot_dla34_30e_1088x608_bdd100k_vehicle --video_file=dataset/mot/test_model.mov --device=GPU --run_benchmark=True --trt_max_shape=1088 --trt_min_shape=608 --trt_opt_shape=608 --run_mode=trt_fp16   --save_mot_txts'
+```
+python3.7 deploy/python/mot_jde_infer.py --model_dir=output_inference/fairmot_dla34_30e_1088x608_bdd100k_vehicle --video_file=dataset/mot/test_model.mov --device=GPU --run_benchmark=True --trt_max_shape=1088 --trt_min_shape=608 --trt_opt_shape=608 --run_mode=trt_fp16   --save_mot_txts
+```
 
