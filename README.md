@@ -88,7 +88,13 @@ FairMOT属于JDE（Jointly learns the Detector and Embedding model ）的一种�
 python3.7 tools/eval_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml -o weights=models/fairmot_dla34_30e_1088x608_bdd100k_vehicle.pdparams
 ```
 
-## 6 模型优化(进阶)
+## 6 模型优化
+
+### 6.1 可变形卷积
+
+可变形卷积网络(Deformable Convolution Network, DCN)顾名思义就是卷积的位置是可变形的，并非在传统的$$N × N$$的网格上做卷积，这样的好处就是更准确地提取到我们想要的特征（传统的卷积仅仅只能提取到矩形框的特征）。本实验在CenterNet head中加入了DCN，具体新的CenterNet head代码见centernet_head.py。在head中加入dcn后，模型的MOTA从原来的34.9%上升为39.3%，增长了4.4%。
+
+### 数据增强
 
 ## 7 模型预测
 
