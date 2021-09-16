@@ -24,7 +24,7 @@ MOTA（跟踪准确率），除了误报、丢失目标、ID异常切换情况�
 
 $$m_t$$:FP,缺失数（漏检数），即在第t帧中该目标$$O_j$$没有假设位置与其匹配。
 
-$$fp_t$$ :是FN，误判数，即在第t帧中给出的假设位置$$h_j$$没有跟踪目标与其匹配。
+$$fp_t$$:是FN，误判数，即在第t帧中给出的假设位置$$h_j$$没有跟踪目标与其匹配。
 
 $$mme_t$$:是ID Sw，误配数，即在第t帧中跟踪目标发生ID切换的次数，多发生在这档情况下。
 
@@ -95,6 +95,13 @@ python3.7 tools/eval_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bd
 可变形卷积网络(Deformable Convolution Network, DCN)顾名思义就是卷积的位置是可变形的，并非在传统的$$N × N$$的网格上做卷积，这样的好处就是更准确地提取到我们想要的特征（传统的卷积仅仅只能提取到矩形框的特征）。本实验在CenterNet head中加入了DCN，具体新的CenterNet head代码见centernet_head_dcn.py。在head中加入dcn后，模型的MOTA从原来的34.9%上升为39.3%，增长了4.4%。
 
 ### 数据增强
+Mixup 是最先提出的图像混叠增广方案，其原理简单、方便实现，不仅在图像分类上，在目标检测上也取得了不错的效果。为了便于实现，通常只对一个 batch 内的数据进行混叠。Mixup后图像可视化如下图所示：
+<center><img src="./images/mixup.png" width=70%></center>
+在baseline中加入dcn后再加入mixup数据增强，模型MOTA为36.8%，比只加入dcn下降了2.5%。
+
+### 指数移动平均（EMA）
+在深度学习中，经常会使用EMA（指数移动平均）这个方法对模型的参数做平均，以求提高测试指标并增加模型鲁棒。指数移动平均（Exponential Moving Average）也叫权重移动平均（Weighted Moving Average），是一种给予近期数据更高权重的平均方法。
+本实验在baseline中加入dcn的基础上加入了EMA，ema_decay=0.9998。模型MOTA为38.5%，比只加入dcn下降了0.8%。
 
 ## 7 模型预测
 
