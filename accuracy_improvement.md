@@ -13,7 +13,9 @@ Mixup原理公式为：
 Mixup后图像可视化如下图所示：
 <center><img src="./images/mixup.png" width=70%></center>
 在baseline中加入dcn后再加入mixup数据增强，模型MOTA为36.8%，比只加入dcn下降了2.5%。
+
 具体为在fairmot_reader_1088x608.yml文件中TrainReader的sample_transforms下加入- Mixup: {alpha: 1.5, beta: 1.5}，在TrainReader中加入mixup_epoch: 25。
+
 mixup_epoch (int): 在前mixup_epoch轮使用mixup增强操作；当该参数为-1时，该策略不会生效。默认为-1。
 
 ## 指数移动平均（EMA）
@@ -24,5 +26,22 @@ mixup_epoch (int): 在前mixup_epoch轮使用mixup增强操作；当该参数为
 use_ema: true
 ema_decay: 0.9998
 ```
+
+## conf和tracked阈值修改
+
+在fairmot_dla34.yml文件中JDETracker下有conf_thres和tracked_thresh两个超参数，分别用于是检测的阈值和跟踪的阈值，默认均为0.4，将两者都改成0.2后，在baseline基础上加入dcn的模型，MOTA从39.3%降为35.7%，下降3.6%。
+
+## sync_bn
+
+默认情况下，在使用多个GPU卡训练模型的时候，Batch Normzlization都是非同步的（unsynchronized），即归一化操作是基于每个GPU上的数据进行的，卡与卡之间不同步。在fairmot_dla34.yml文件中加入norm_type: sync_bn可实现多卡训练时归一化同步的功能。
+
+baseline+dcn+ema基础上加上sync_bn MOTA从38.5%提升到了38.6%，提升了0.1%。
+
+## dla60
+
+baseline中centernet的backbone为dla34，将dla34换成更大的dla60后，之前的预训练模型不能再用，在加入dcn的情况下，MOTA从39.3%降为22.5%，下降了16.8%。可见预训练模型的重要性。
+
+dla60具体代码见dla.py文件，将class DLA(nn.Layer)中__init__函数输入参数depth改为60。
+
 
 
