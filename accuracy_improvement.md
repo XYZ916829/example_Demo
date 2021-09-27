@@ -43,5 +43,9 @@ baseline中centernet的backbone为dla34，将dla34换成更大的dla60后，之�
 
 dla60具体代码见dla.py文件，将class DLA(nn.Layer)中__init__函数输入参数depth改为60。
 
+## hardnet85
 
+将baseline中centernet的backbone换为hardnet85，预训练模型在coco数据集上训练而得。hardnet85网络结构的配置文件见fairmot_hardnet85.yml。利用hardnet85训练的配置文件见fairmot_hardnet85_30e_1088x608.yml。在bdd100k数据集上训练模型的配置文件：fairmot_hardnet85_30e_1088x608_bdd100k_vehicle.yml。训练8个epoch的mota可达到39.1%。
+
+在上面的实验基础上加入sync_bn，8卡训练epoch=12时，mota为39.8%。
 
