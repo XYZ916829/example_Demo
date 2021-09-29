@@ -49,3 +49,4 @@ dla60具体代码见dla.py文件，将class DLA(nn.Layer)中__init__函数输入
 
 在上面的实验基础上加入sync_bn，8卡训练epoch=12时，mota为39.8%。
 
+继续在上面的基础上加入dcn，4卡训练epoch=12是MOTA为39.2%。
