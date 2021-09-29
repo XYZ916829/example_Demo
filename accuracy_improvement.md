@@ -50,3 +50,14 @@ dla60具体代码见dla.py文件，将class DLA(nn.Layer)中__init__函数输入
 在上面的实验基础上加入sync_bn，8卡训练epoch=12时，mota为39.8%。
 
 继续在上面的基础上加入dcn，4卡训练epoch=12是MOTA为39.2%。
+
+## BDD100K所有四轮车数据看作一个类别
+
+centernet的backbone为dla34，coco数据集进行模型的预训练，lr=0.0005  bs=16*8卡，12epoch（8epoch降lr），MOTA为39.6%。
+
+和上述配置相同的情况下，加入8万张bdd100kdet_vehicle数据集一起训，MOTA为39.7%，提升了0.1%。
+
+同样是dla34作为baseline，coco预训练，4gpu, bs6, 12epoch(8epoch降lr), lr=0.0002，MOTA为38.1%，比8卡训练下降1.5%。
+
+dla34换成hardnet85后，用4卡训练，在epoch=8时，mota为38.9%，比dla34四卡高0.8%。
+
