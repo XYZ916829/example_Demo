@@ -25,7 +25,7 @@ $$mme_t$$:是ID Sw，误配数，即在第t帧中跟踪目标发生ID切换的�
 
 ## 2 数据准备
 
-本案例利用公开数据集[BDD100K](https://bdd-data.berkeley.edu/)，该数据集由伯克利大学AI实验室（BAIR）于2018年5月发布。BDD100K 数据集包含10万段高清视频，每个视频约40秒，720p，30 fps。每个视频的第10秒对关键帧进行采样，得到10万张图片（图片尺寸：1280*720 ），并进行标注。
+本案例利用公开数据集BDD100K，该数据集由伯克利大学AI实验室（BAIR）于2018年5月发布。BDD100K 数据集包含10万段高清视频，每个视频约40秒，720p，30 fps。每个视频的第10秒对关键帧进行采样，得到10万张图片（图片尺寸：1280*720 ），并进行标注。
 
 <center><img src="./images/BDD100K.png" width=70%></center>
 
@@ -45,6 +45,8 @@ Annotation包含了被标记对象的： 源图像的URL、类别标签、大小
 其中汽车（Car）一类超过了100万个样本。
 
 BDD100K数据集采集自6中不同的天气，其中晴天样本较多；采集的场景有6种，以城市街道为主；采集的时间有3个阶段，其中白天和夜晚居多。
+
+本案例数据处理脚本请参考：https://github.com/PaddlePaddle/PaddleDetection/tree/develop/configs/mot/vehicle/tools/bdd100kmot。
 
 ## 3 模型选择
 
