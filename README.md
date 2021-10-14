@@ -46,7 +46,7 @@ Annotation包含了被标记对象的： 源图像的URL、类别标签、大小
 
 BDD100K数据集采集自6中不同的天气，其中晴天样本较多；采集的场景有6种，以城市街道为主；采集的时间有3个阶段，其中白天和夜晚居多。
 
-本案例数据处理脚本请参考：https://github.com/PaddlePaddle/PaddleDetection/tree/develop/configs/mot/vehicle/tools/bdd100kmot。
+本案例数据处理脚本请参考：https://github.com/PaddlePaddle/PaddleDetection/tree/develop/configs/mot/vehicle/tools/bdd100kmot
 
 ## 3 模型选择
 
