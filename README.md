@@ -27,6 +27,8 @@ $$fp_t$$:是FN，误判数，即在第t帧中给出的假设位置$$h_j$$没有�
 
 $$mme_t$$:是ID Sw，误配数，即在第t帧中跟踪目标发生ID切换的次数，多发生在这档情况下。
 
+本项目AI Studio链接：https://aistudio.baidu.com/aistudio/projectdetail/2237275?contributionType=1
+
 ## 2 数据准备
 
 本案例利用公开数据集BDD100K，该数据集由伯克利大学AI实验室（BAIR）于2018年5月发布。BDD100K 数据集包含10万段高清视频，每个视频约40秒，720p，30 fps。每个视频的第10秒对关键帧进行采样，得到10万张图片（图片尺寸：1280*720 ），并进行标注。
