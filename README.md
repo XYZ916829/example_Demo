@@ -139,6 +139,11 @@ python3.7 tools/infer_mot.py -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_b
 --draw_threshold 0.2 --save_images
 ```
 
+>确保安装了ffmpeg库。
+```
+apt-get update && apt-get install -y ffmpeg
+```
+
 ## 8 模型导出
 
 导出模型运行如下代码：
