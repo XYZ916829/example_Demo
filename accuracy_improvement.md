@@ -59,5 +59,5 @@ centernet的backbone为dla34，coco数据集进行模型的预训练，lr=0.0005
 
 同样是dla34作为baseline，coco预训练，4gpu, bs6, 12epoch(8epoch降lr), lr=0.0002，MOTA为38.1%，比8卡训练下降1.5%。
 
-dla34换成hardnet85后，用4卡训练，在epoch=8时，mota为38.9%，比dla34四卡高0.8%。
+centernet的backbone由dla34换作是hardnet85后，用4卡训练，在epoch=8时，mota为38.9%，比dla34四卡高0.8%。
 
