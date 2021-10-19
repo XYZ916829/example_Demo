@@ -79,7 +79,18 @@ FairMOT属于JDE（Jointly learns the Detector and Embedding model ）的一种�
 
 ## 4 模型训练
 
+下载PaddleDetection源码（本项目使用PaddleDetection release/2.2版本）：
+
+'git clone https://github.com/PaddlePaddle/PaddleDetection.git'
+
+安装PaddleDetection依赖库：
+
+'cd PaddleDetection/
+pip install -r requirements.txt
+python setup.py install'
+
 运行如下代码开始训练模型：
+
 'python3.7 -m paddle.distributed.launch --log_dir log_vehicle --gpus 0,1,2,3,4,5,6,7 tools/train.py   -c configs/mot/vehicle/fairmot_dla34_30e_1088x608_bdd100k_vehicle.yml' 
 
 - '--log_dir'参数指定训练log存放的目录；
